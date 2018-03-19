@@ -19,7 +19,7 @@ use Yii;
  */
 class Order extends \yii\db\ActiveRecord
 {
-   
+   public $captcha;
     /**
      * {@inheritdoc}
      */
@@ -34,11 +34,13 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'email'], 'required'],
+            [['username', 'email', 'captcha'], 'required'],
             [['created', 'file'], 'safe'],
+            [['email'], 'email'],
             [['text'], 'string'],
             [['username', 'email', 'homepage', 'user_ip', 'user_brouser', 'file'], 'string', 'max' => 255],
-            [['file'], 'file', 'extensions' => 'png, jpg, jpeg, gif, txt', 'maxSize' =>  320*240],
+            [['file'], 'file', 'extensions' => 'png, jpg, jpeg, gif, txt'],
+            [['captcha'], 'captcha'],
         ];
     }
 

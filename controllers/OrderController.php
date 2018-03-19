@@ -8,6 +8,8 @@ use app\models\SearchOrder;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\AtacheFile;
+use yii\web\UploadedFile;
 
 /**
  * OrderController implements the CRUD actions for Order model.
@@ -70,9 +72,19 @@ class OrderController extends Controller
            
             $model->user_ip = $model->getUserIp();
             $model->user_brouser = $model->getUserBrouser();
-//            var_dump($model);
-            if($model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
+            
+            $file = new AtacheFile();
+             if(UploadedFile::getInstance($model, 'file')) {
+                 
+                $file->file = UploadedFile::getInstance($model, 'file');
+
+                $model->file = $file->file->name;
+
+                if ($file->upload()) {
+                 if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                    }
+                }
             }
         }
 
