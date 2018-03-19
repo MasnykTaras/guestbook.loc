@@ -77,14 +77,14 @@ class OrderController extends Controller
              if(UploadedFile::getInstance($model, 'file')) {
                  
                 $file->file = UploadedFile::getInstance($model, 'file');
-
-                $model->file = $file->file->name;
-
-                if ($file->upload()) {
-                 if($model->save()){
-                    return $this->redirect(['view', 'id' => $model->id]);
-                    }
-                }
+                if($model->validateFile($file->file)){
+                   $model->file = $file->file->name;
+                    if ($file->upload()) {
+                     if($model->save()){
+                        return $this->redirect(['view', 'id' => $model->id]);
+                        }
+                    } 
+                }                
             }
         }
 

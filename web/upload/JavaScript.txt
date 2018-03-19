@@ -1,0 +1,106 @@
+comparisons (e.g. >, <=)
+* > Greater than
+* < Less than
+* <= Less than or equal to
+* >= Greater than or equal to
+* === Equal to
+* !== Not equal to
+
+modulo (e.g. %)
+string length (e.g. "Emily".length;)
+substrings (e.g. "hi".substring(0, 1);)
+console.log( ) –пічатае те що в душках
+confirm("Are you ready?") – вискакує повідомлення
+prompt("What's your age")- повідомленя з написанням текста
+Додавання і віднімання:
+і++ - і=і+1
+і-- - і=і-1
+і+=х –і=і+х
+і-=ч –і=і-х
+[] –межі масиву
+*.length-рахує довжину масиву
+/*jshint multistr:true */ - дозволяє ігнорити / в тексті
+hits.push(text[j])-записує в масив текс(і)
+str.substring(indexA, [indexB])-витягує строку від А до В не включаючи В
+isNaN(*) – перевіряє чи * не число
+	isNaN('berry'); // => true
+	isNaN(NaN); // => true
+	isNaN(undefined); // => true
+	іsNaN(42);  // => false
+_____________________________________
+switch (/*Some expression*/) {
+    case 'option1':
+        // Do something
+        break;
+    case 'option2':
+        // Do something else
+        break;
+    case 'option3':
+        // Do a third thing
+        break;
+    default:
+       // Do yet another thing
+}
+_____________________________________
+For example:
+for (var i = 1; i < 11; i++) {
+    // Prints numbers 1 - 10
+    console.log(i);
+}
+______________________________________
+While example:
+var condition = true;
+while(condition) {
+    // Says "Hello!"
+    console.log("Hello!");
+    // Avoid infinite loops
+    condition = false;
+}
+
+
+
+
+
+if (condition1) {
+    return "some string"
+}
+else if (condition2) {
+    return "another string"
+}
+else {
+    return "yet another string"
+}
+
+And =>&&
+true && true;    // => true
+true && false;   // => false
+false && true;   // => false
+false && false;  // => false
+1
+Or => ||
+true || true;     // => true
+true || false;    // => true
+false || true;    // => true
+false || false;   // => false
+1
+__________________________________________
+Not => !
+!true;   // => false
+!false;  // => true
+
+1________________________________
+(*).toUpperCase() – запам’ятовує відповідь всі букви великі
+(*).toLowerCase() - запам’ятовує відповідь всі букви малі
+Обекти типу масиви
+А.
+var myObj = {
+    type: 'fancy',
+    disposition: 'sunny'
+};
+____________________________-
+Б.
+var myObj = new Object();
+myObj["name"] = "Charlie";
+myObj.name = "Charlie";
+_____________________________-
+

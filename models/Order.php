@@ -39,11 +39,11 @@ class Order extends \yii\db\ActiveRecord
             [['email'], 'email'],
             [['text'], 'string'],
             [['username', 'email', 'homepage', 'user_ip', 'user_brouser', 'file'], 'string', 'max' => 255],
-            [['file'], 'file', 'extensions' => 'png, jpg, jpeg, gif, txt'],
+            [['file'], 'file', 'extensions' => 'png, jpg, jpeg, gif, txt'],            
             [['captcha'], 'captcha'],
         ];
     }
-
+   
     /**
      * {@inheritdoc}
      */
@@ -69,5 +69,12 @@ class Order extends \yii\db\ActiveRecord
     public function getUserBrouser()
     {
         return  parse_user_agent()['browser'];
+    }   
+    public function validateFile($file)
+    {        
+        if($file->type == 'text/plain' && $file->size > 1024 * 100){
+            return false;
+        }
+        return true;
     }
 }
