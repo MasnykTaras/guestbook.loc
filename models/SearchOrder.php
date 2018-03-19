@@ -17,9 +17,8 @@ class SearchOrder extends Order
      */
     public function rules()
     {
-        return [
-            [['id'], 'integer'],
-            [['username', 'email', 'created', 'homepage', 'text', 'user_ip', 'user_brouser', 'file'], 'safe'],
+        return [            
+            [['username', 'email', 'created'], 'safe'],
         ];
     }
 
@@ -47,6 +46,11 @@ class SearchOrder extends Order
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'forcePageParam' => false,
+                'pageSizeParam' => false,
+                'pageSize' => 25
+            ]
         ]);
 
         $this->load($params);
@@ -64,12 +68,8 @@ class SearchOrder extends Order
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'homepage', $this->homepage])
-            ->andFilterWhere(['like', 'text', $this->text])
-            ->andFilterWhere(['like', 'user_ip', $this->user_ip])
-            ->andFilterWhere(['like', 'user_brouser', $this->user_brouser])
-            ->andFilterWhere(['like', 'file', $this->file]);
+            ->andFilterWhere(['like', 'email', $this->email]);
+           
 
         return $dataProvider;
     }

@@ -22,7 +22,9 @@ use yii\captcha\Captcha;
     <?= $form->field($model, 'homepage')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'text')->widget(Summernote::className());  ?>
-    
+    <?php if($model->id){ ?>
+        <?= Html::tag('p' , $model->getCurrentFile($model->id)[0]) ?>
+    <?php } ?>
     <?= $form->field($model, 'file')->fileInput() ?>
     
     <?= $form->field($model, 'captcha')->widget(Captcha::classname()) ?>

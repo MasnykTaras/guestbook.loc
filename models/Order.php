@@ -61,20 +61,41 @@ class Order extends \yii\db\ActiveRecord
             'file' => 'File',
         ];
     }
-    
+    /**
+     * Get User ID address
+     * @return string
+     */
     public function getUserIp()
     {       
         return  $_SERVER['REMOTE_ADDR'];
     }
+    /**
+     * get user brouser info
+     * @return str
+     */
     public function getUserBrouser()
     {
         return  parse_user_agent()['browser'];
     }   
+    /**
+     * Validate file txt size
+     * @param object $file
+     * @return boolean
+     */
     public function validateFile($file)
     {        
         if($file->type == 'text/plain' && $file->size > 1024 * 100){
             return false;
         }
         return true;
+    }
+    /**
+     * Get current file
+     * @param int $id 
+     * @return array
+     */
+    public  function getCurrentFile($id)
+    {        
+        return self::find()->select(['file'])->where([ 'id' => $id ])->column();
     }
 }

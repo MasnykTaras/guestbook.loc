@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\AtacheFile;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 /**
  * OrderController implements the CRUD actions for Order model.
@@ -22,6 +23,23 @@ class OrderController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['login', 'logout', 'create', 'index', 'update', 'delete', 'view'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'signup', 'index', 'view','create',],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout', 'create', 'index', 'update', 'delete', 'view'],
+                        'roles' => ['@'],
+                    ],
+                   
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -104,11 +122,25 @@ class OrderController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+        
+         if(!empty(UploadedFile::getInstance($model, 'file'))){
+                $file = new AtacheFile();
+                $file->fiel = UploadedFile::getInstance($model, 'file');
+                $model->file = $file->file->name;
+                if (!$file->upload()) {                    
+                     return $this->render('update', [
+                        'model' => $model,
+                    ]); 
+                }
+            }else{
+                $model->file = $model->getCurrentFile($model->id)[0];
+            } 
+            if($model->save()){
+              return $this->redirect(['view', 'id' => $model->id]);  
+            }
         }
-
-        return $this->render('update', [
+         return $this->render('update', [
             'model' => $model,
         ]);
     }
