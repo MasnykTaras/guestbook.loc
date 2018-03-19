@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc7a8cdcef199b8ae2c984c1e3e94b51",
+    "content-hash": "3b4fe95de9dee8513f4061419c2fc689",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -27,6 +27,22 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bower-asset/codemirror",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/codemirror.git",
+                "reference": "0942c22a2762358f6f2216e4cd67f72feab98c4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/codemirror/zipball/0942c22a2762358f6f2216e4cd67f72feab98c4c",
+                "reference": "0942c22a2762358f6f2216e4cd67f72feab98c4c",
+                "shasum": null
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/inputmask",
@@ -81,6 +97,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3",
+                "shasum": null
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/summernote",
+            "version": "v0.8.10",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:summernote/summernote.git",
+                "reference": "810f1944d5678881cc5a06bd45075e98b50366a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/summernote/summernote/zipball/810f1944d5678881cc5a06bd45075e98b50366a0",
+                "reference": "810f1944d5678881cc5a06bd45075e98b50366a0",
                 "shasum": null
             },
             "type": "bower-asset"
@@ -168,6 +200,57 @@
             "time": "2018-03-16T08:23:43+00:00"
         },
         {
+            "name": "donatj/phpuseragentparser",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/donatj/PhpUserAgent.git",
+                "reference": "6359f3fdf9a4857a94a058e0c9078ef33dab9cc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/donatj/PhpUserAgent/zipball/6359f3fdf9a4857a94a058e0c9078ef33dab9cc1",
+                "reference": "6359f3fdf9a4857a94a058e0c9078ef33dab9cc1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "camspiers/json-pretty": "0.1.*",
+                "donatj/drop": "*",
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Source/UserAgentParser.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jesse G. Donat",
+                    "email": "donatj@gmail.com",
+                    "homepage": "http://donatstudios.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple, streamlined PHP user-agent parser",
+            "homepage": "http://donatstudios.com/PHP-Parser-HTTP_USER_AGENT",
+            "keywords": [
+                "browser",
+                "browser detection",
+                "parser",
+                "user agent",
+                "useragent"
+            ],
+            "time": "2017-12-06T16:07:23+00:00"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.10.0",
             "source": {
@@ -213,6 +296,64 @@
                 "html"
             ],
             "time": "2018-02-23T01:58:20+00:00"
+        },
+        {
+            "name": "marqu3s/yii2-summernote",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marqu3s/yii2-summernote.git",
+                "reference": "484d6753f7ede4750689dd8ba706b701731d0abc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marqu3s/yii2-summernote/zipball/484d6753f7ede4750689dd8ba706b701731d0abc",
+                "reference": "484d6753f7ede4750689dd8ba706b701731d0abc",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/codemirror": "@stable",
+                "bower-asset/summernote": "0.*",
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "marqu3s\\summernote\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Joao Marques",
+                    "email": "joao@jjmf.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 Summernote widget. Super simple WYSIWYG editor on Bootstrap",
+            "homepage": "https://github.com/marqu3s/yii2-summernote",
+            "keywords": [
+                "summernote",
+                "widget",
+                "wysiwyg",
+                "yii2"
+            ],
+            "time": "2016-01-15T00:00:00+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3119,7 +3260,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "marqu3s/yii2-summernote": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

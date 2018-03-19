@@ -19,6 +19,7 @@ use Yii;
  */
 class Order extends \yii\db\ActiveRecord
 {
+   
     /**
      * {@inheritdoc}
      */
@@ -33,10 +34,11 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'email', 'homepage', 'user_ip', 'user_brouser'], 'required'],
-            [['created'], 'safe'],
+            [['username', 'email'], 'required'],
+            [['created', 'file'], 'safe'],
             [['text'], 'string'],
             [['username', 'email', 'homepage', 'user_ip', 'user_brouser', 'file'], 'string', 'max' => 255],
+            [['file'], 'file', 'extensions' => 'png, jpg, jpeg, gif, txt', 'maxSize' =>  320*240],
         ];
     }
 
@@ -56,5 +58,14 @@ class Order extends \yii\db\ActiveRecord
             'user_brouser' => 'User Brouser',
             'file' => 'File',
         ];
+    }
+    
+    public function getUserIp()
+    {       
+        return  $_SERVER['REMOTE_ADDR'];
+    }
+    public function getUserBrouser()
+    {
+        return  parse_user_agent()['browser'];
     }
 }

@@ -65,9 +65,15 @@ class OrderController extends Controller
     public function actionCreate()
     {
         $model = new Order();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+     
+        if ($model->load(Yii::$app->request->post())) {
+           
+            $model->user_ip = $model->getUserIp();
+            $model->user_brouser = $model->getUserBrouser();
+//            var_dump($model);
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', [
